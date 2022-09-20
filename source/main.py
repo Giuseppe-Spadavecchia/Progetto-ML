@@ -20,7 +20,7 @@ query_index = np.random.choice(df.index)
 number_of_recommendation = 20
 
 recommendations = make_recommendations(dataframe, df, query_index, model_knn, number_of_recommendation)
-print_recommendations(dataframe, df, query_index, recommendations)
+print_recommendations(dataframe, query_index, recommendations)
 
 
 rec_song = recommendations['name']
