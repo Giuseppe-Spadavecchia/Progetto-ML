@@ -7,7 +7,11 @@ from data_manipolation import manipolation
 np.random.seed(42)
 
 #Lettura dei dati
-dataframe = pd.read_csv('~/Documents/Progetto_ML/data/data.csv')
+dataframe = pd.read_csv('~/Documents/Progetto-ML/data/data.csv')
+dataframe = dataframe.drop_duplicates(subset=['name'])
+
+dataframe.to_csv('~/Documents/Progetto-ML/data/dataframe.csv', index=False)
+dataframe = pd.read_csv('~/Documents/Progetto-ML/data/dataframe.csv')
 
 #Manipolazione dei dati
 df = manipolation(dataframe)
@@ -27,8 +31,8 @@ rec_song = recommendations['name']
 rec_artists = recommendations['artists']
 
 #Creazione dell'utente fitizzio con delle preferenze per quanto riguarda sia i brani che gli artsisti
-test_artists = ["['Ignacio Corsini']", "['Beyoncé']", "['Georgius']", "['Louis Armstrong']", "['Kendrick Lamar']", "['Regina Belle']", "['Francisco Canaro']" ]
-test_song = ["Summer Wit' Miami", "Good Life", "You're Driving Me Crazy", "Back O' Town Blues", "Sonata 1", "good kid", "Praise God I'm Satisfied", "Ring The Alarm"]
+test_artists = ["['Rise Against']", "['Jason Aldean']", "['Matchbook Romance']", "['Louis Armstrong']", "['Eminem']", "['Regina Belle']", " ['LiSA']" ]
+test_song = ["Life Less Frightening ", "Good Life", " Mt. Diablo ", "Back O' Town Blues", "crossing field ", "good kid", "Call To Arms ", "Crazy Town"]
 
 evaluation_metrics(rec_song, test_song, number_of_recommendation)
 evaluation_metrics(rec_artists, test_artists, number_of_recommendation)
