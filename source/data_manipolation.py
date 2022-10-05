@@ -7,7 +7,7 @@ def manipolation(dataframe):
 
     # Si riducono le feature del dataframe a quelle considerate rilevanti
     df = dataframe.drop(
-        ['name', 'year', 'artists', 'popularity', 'explicit', 'duration_ms', 'key', 'mode', 'release_date'], axis=1)
+            ['name', 'artists', 'genre', 'popularity', 'duration_ms', 'time_signature', 'key', 'mode'], axis=1)
 
     # Normalizzazione delle feature tramite Z-Score
     df['loudness'] = (df['loudness'] - df['loudness'].mean()) / df['loudness'].std()
@@ -16,7 +16,6 @@ def manipolation(dataframe):
     df = df.drop(['id'], axis=1)
 
     return df
-
 
 
 
