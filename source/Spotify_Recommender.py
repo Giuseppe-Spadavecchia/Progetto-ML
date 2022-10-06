@@ -14,10 +14,13 @@ def make_recommendations(data, data_new, index, model, number_recommendation=5):
     #Calcolo delle distanze e degli indici che puntano agli elementi legati a queste distanze
     distances, indices = model.kneighbors(query, n_neighbors=number_recommendation)
     distances = distances.reshape(number_recommendation, 1)
+    #Si rimuove il primo elemento in quanto si rifericìsce al brano di cui si volgiono le raccomandazioni
+    distances = np.delete(distances, 0)
 
     for i in indices:
         #Inserimento del nome del brano e dell'artista nella variabile delle raccomandazioni
         recommendations = data[['name', 'artists']].loc[i].where(data['id'] != index).dropna()
+        recommendations['distances'] = distances
 
     return recommendations
 
